@@ -72,22 +72,22 @@ const Hero = () => {
           <div className="absolute left-10 bottom-32 w-32 h-[1px] bg-white/10"></div>
       </div>
 
-      <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center pt-24 md:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           
           {/* TEXT CONTENT */}
-          <div className="text-white space-y-8 order-2 lg:order-1 relative">
+          <div className="text-white space-y-6 md:space-y-8 order-2 lg:order-1 relative text-center lg:text-left">
             
             <div>
-                <p className="hero-glitch-text text-sm md:text-base font-mono text-brand-blue tracking-[0.3em] mb-2 uppercase">
+                <p className="hero-glitch-text text-xs md:text-base font-mono text-brand-blue tracking-[0.3em] mb-2 uppercase">
                     &lt;System.Initialize /&gt;
                 </p>
                 
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] relative">
+                <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] relative">
                     <div className="overflow-hidden">
                         <span className="hero-glitch-text block text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">MRB</span>
                     </div>
-                    <div className="overflow-hidden relative">
+                    <div className="overflow-hidden relative inline-block lg:block">
                         <span className="hero-glitch-text block text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-600">RAFI</span>
                         {/* Glitch Overlay to happen on hover or init */}
                         <span className="glitch-overlay absolute top-0 left-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 opacity-0 mix-blend-screen translate-x-[2px] pointer-events-none">RAFI</span>
@@ -95,20 +95,20 @@ const Hero = () => {
                 </h1>
             </div>
 
-            <p className="hero-glitch-text text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed border-l-2 border-brand-blue/30 pl-6">
+            <p className="hero-glitch-text text-base md:text-xl text-gray-400 max-w-lg leading-relaxed border-l-0 md:border-l-2 border-brand-blue/30 md:pl-6 mx-auto lg:mx-0">
               Processing <span className="text-white font-bold">MERN</span> protocols to architect next-gen digital experiences.
             </p>
             
-            <div className="hero-glitch-text flex items-center gap-6 pt-4">
+            <div className="hero-glitch-text flex flex-wrap justify-center lg:justify-start items-center gap-4 md:gap-6 pt-4">
               <SocialLink href="https://www.linkedin.com/in/mrbrafi2005" icon={<Linkedin size={20} />} />
               <SocialLink href="https://github.com/MRBRAFI" icon={<Github size={20} />} />
               <SocialLink href="mailto:devmrbrafi@gmail.com" icon={<Mail size={20} />} />
               
-              <div className="h-px w-12 bg-white/10 mx-2"></div>
+              <div className="h-px w-12 bg-white/10 mx-2 hidden sm:block"></div>
 
               <a 
                 href="https://docs.google.com/document/d/1DwLnXMimgNZeyHHu12ZVAX4q5u3d31KK846b9CCwDN0/export?format=pdf"
-                className="group relative px-6 py-2 bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest hover:bg-brand-red hover:border-brand-red transition-all duration-300 flex items-center gap-2"
+                className="group relative px-6 py-2 bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest hover:bg-brand-red hover:border-brand-red transition-all duration-300 flex items-center gap-2 backdrop-blur-md"
               >
                   <span>Download CV</span>
                   <Download size={14} className="group-hover:translate-y-1 transition-transform" />
@@ -120,8 +120,8 @@ const Hero = () => {
           </div>
 
           {/* HOLOGRAPHIC PROFILE (Orbital System) */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-            <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] flex items-center justify-center">
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2 mt-10 md:mt-0">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[500px] md:h-[500px] flex items-center justify-center scale-90 sm:scale-100">
                 
                 {/* CORE GLOW */}
                 <div className="absolute inset-0 bg-brand-blue/5 rounded-full blur-[100px]"></div>
@@ -173,7 +173,7 @@ const SocialLink = ({ href, icon }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 border border-white/10 hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+    className="w-10 h-10 rounded-full flex items-center justify-center text-gray-300 border border-white/20 bg-white/5 hover:bg-white hover:text-black hover:border-white transition-all duration-300 backdrop-blur-sm"
   >
     {icon}
   </a>
