@@ -99,7 +99,7 @@ const Hero = () => {
               Processing <span className="text-white font-bold">MERN</span> protocols to architect next-gen digital experiences.
             </p>
             
-            <div className="hero-glitch-text flex flex-wrap justify-center lg:justify-start items-center gap-4 md:gap-6 pt-4">
+            <div className="hero-glitch-text hidden lg:flex items-center gap-6 pt-4">
               <SocialLink href="https://www.linkedin.com/in/mrbrafi2005" icon={<Linkedin size={20} />} />
               <SocialLink href="https://github.com/MRBRAFI" icon={<Github size={20} />} />
               <SocialLink href="mailto:devmrbrafi@gmail.com" icon={<Mail size={20} />} />

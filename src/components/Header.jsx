@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, User, Briefcase, Cpu, Mail, Waves } from 'lucide-react';
+import { Menu, X, Home, User, Briefcase, Cpu, Mail, Waves, Linkedin, Github, Download } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import CyberPet from './CyberPet';
@@ -132,7 +132,7 @@ const Header = () => {
                         exit={{ x: 100, opacity: 0 }}
                         className="fixed top-24 right-4 z-50 w-64 bg-gray-900/90 border border-white/10 rounded-2xl p-4 shadow-2xl md:hidden"
                     >
-                        <ul className="grid grid-cols-1 gap-2">
+                        <ul className="grid grid-cols-1 gap-2 border-b border-white/10 pb-4 mb-4">
                              {navItems.map((item) => (
                                 <li key={item.name}>
                                     <a
@@ -153,6 +153,23 @@ const Header = () => {
                                 </li>
                             ))}
                         </ul>
+
+                        {/* Mobile Social & CV Actions */}
+                        <div className="space-y-4">
+                            <div className="flex justify-center gap-4">
+                                <a href="https://www.linkedin.com/in/mrbrafi2005" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-brand-blue transition-all"><Linkedin size={20} /></a>
+                                <a href="https://github.com/MRBRAFI" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-brand-blue transition-all"><Github size={20} /></a>
+                                <a href="mailto:devmrbrafi@gmail.com" className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-brand-blue transition-all"><Mail size={20} /></a>
+                            </div>
+                            
+                            <a 
+                                href="https://docs.google.com/document/d/1DwLnXMimgNZeyHHu12ZVAX4q5u3d31KK846b9CCwDN0/export?format=pdf"
+                                className="block w-full text-center py-3 bg-white/10 border border-white/20 rounded-lg text-white font-bold uppercase tracking-widest text-sm hover:bg-brand-red hover:border-brand-red transition-all flex items-center justify-center gap-2"
+                            >
+                                <span>Download CV</span>
+                                <Download size={16} />
+                            </a>
+                        </div>
                     </motion.div>
                 </>
             )}
