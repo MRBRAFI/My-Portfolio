@@ -188,7 +188,7 @@ const Projects = () => {
                                         href={activeProject.links.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-6 py-3 rounded-lg border border-white/10 text-white hover:bg-white/5 transition-all flex items-center gap-2"
+                                        className="px-6 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all flex items-center gap-2"
                                     >
                                         <Github size={18} />
                                         <span className="hidden md:inline">Source Code</span>
