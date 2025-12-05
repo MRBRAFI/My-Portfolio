@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Outerspace Background */
+    @apply bg-custom-dark-blue;
+    background: radial-gradient(circle at 15% 50%, #E53935 0%, transparent 25%), 
+                radial-gradient(circle at 85% 30%, #1E88E5 0%, transparent 25%), 
+                linear-gradient(to bottom, #051025 0%, #0D47A1 100%);
+    background-attachment: fixed;
+    color: white;
+  }
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05); /* Made more transparent for dark bg */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.progress-gradient {
+  background: linear-gradient(to right, #e53935, #1e88e5);
+}
+
+/* Star field effect using CSS (simple particle like dots) */
+.stars {
+  background-image: 
+    radial-gradient(1px 1px at 25px 5px, white, transparent),
+    radial-gradient(1px 1px at 50px 25px, white, transparent),
+    radial-gradient(1px 1px at 125px 20px, white, transparent),
+    radial-gradient(1.5px 1.5px at 250px 15px, white, transparent),
+    radial-gradient(2px 2px at 350px 50px, white, transparent);
+  background-size: 550px 550px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-200%); }
+    100% { transform: translateX(300%); }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 10s linear infinite;
+}
+
+/* Morphing Blob Animation */
+/* ... (Morphing removed as per user request to use circles, but keeping keyframes doesn't hurt) ... */
+@keyframes morph {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.animate-morph { animation: morph 8s ease-in-out infinite alternate, spin-slow 20s linear infinite; }
+.animate-morph-slower { animation: morph 12s ease-in-out infinite alternate-reverse, spin-slow 25s linear infinite reverse; }
+
+/* CYBER GRID LIGHTING SYSTEM */
+.cyber-grid {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(30, 136, 229, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 136, 229, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
+  transform-origin: top center;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
+}
+
+@keyframes gridBeam {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.grid-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%; /* Adjust as needed */
+  background: linear-gradient(to bottom, transparent, rgba(30, 136, 229, 0.8) 50%, transparent); /* Blue Beam */
+  opacity: 0.5;
+  animation: gridBeam 3s linear infinite;
+  box-shadow: 0 0 20px rgba(30, 136, 229, 0.5); 
+}
+
+/* Horizontal Beam Animation */
+@keyframes beam-h {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+.grid-shiny-lines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(30, 136, 229, 0) 40%, rgba(30, 136, 229, 0.8) 50%, rgba(30, 136, 229, 0) 60%, transparent 100%);
+  background-size: 100% 200px;
+  animation: beam-h 3s linear infinite;
+  mix-blend-mode: color-dodge;
+  pointer-events: none;
+}
