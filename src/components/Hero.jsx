@@ -150,8 +150,6 @@ const Hero = () => {
                       alt="MRB RAFI" 
                       className="w-full h-full object-cover transition-all duration-700 hover:scale-110"
                     />
-                    {/* Scanline Overlay */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.2)_50%)] bg-[length:100%_3px] pointer-events-none z-20"></div>
                 </div>
                 
                 {/* Floating Status Badge */}
