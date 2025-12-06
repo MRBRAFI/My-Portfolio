@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -80,6 +84,220 @@
 
 .animate-morph { animation: morph 8s ease-in-out infinite alternate, spin-slow 20s linear infinite; }
 .animate-morph-slower { animation: morph 12s ease-in-out infinite alternate-reverse, spin-slow 25s linear infinite reverse; }
+
+/* Electric Zapping Animation for RAFI */
+@keyframes electric-zap {
+  0%, 100% { 
+    filter: brightness(1) drop-shadow(0 0 10px rgba(229, 57, 53, 0.5));
+    transform: scale(1);
+  }
+  10% { 
+    filter: brightness(1.5) drop-shadow(0 0 20px rgba(229, 57, 53, 1)) drop-shadow(0 0 40px rgba(229, 57, 53, 0.8));
+    transform: scale(1.02);
+  }
+  15% { 
+    filter: brightness(0.8) drop-shadow(0 0 5px rgba(229, 57, 53, 0.3));
+    transform: scale(0.98);
+  }
+  20% { 
+    filter: brightness(1.8) drop-shadow(0 0 30px rgba(229, 57, 53, 1)) drop-shadow(0 0 60px rgba(255, 100, 100, 0.6));
+    transform: scale(1.03);
+  }
+  25% { 
+    filter: brightness(1) drop-shadow(0 0 10px rgba(229, 57, 53, 0.5));
+    transform: scale(1);
+  }
+}
+
+@keyframes electric-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+  55% { opacity: 1; }
+  60% { opacity: 0.9; }
+  65% { opacity: 1; }
+}
+
+@keyframes lightning-strike {
+  0%, 90%, 100% { 
+    text-shadow: 
+      0 0 10px rgba(229, 57, 53, 0.8),
+      0 0 20px rgba(229, 57, 53, 0.6),
+      0 0 30px rgba(229, 57, 53, 0.4);
+  }
+  92%, 94%, 96% { 
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 40px rgba(229, 57, 53, 1),
+      0 0 60px rgba(229, 57, 53, 0.8),
+      0 0 80px rgba(229, 57, 53, 0.6),
+      0 0 100px rgba(229, 57, 53, 0.4);
+  }
+}
+
+.electric-text {
+  animation: 
+    electric-zap 4s ease-in-out infinite,
+    electric-flicker 3s ease-in-out infinite,
+    lightning-strike 5s ease-in-out infinite;
+  will-change: filter, transform;
+}
+
+/* Battlefield 2042 Style Glitch Distortion */
+@keyframes bf-glitch-distort {
+  0%, 100% {
+    transform: translate(0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  10% {
+    transform: translate(-2px, 1px);
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  }
+  12% {
+    transform: translate(0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  45% {
+    transform: translate(3px, -1px);
+    clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 97%);
+  }
+  47% {
+    transform: translate(0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  80% {
+    transform: translate(-3px, 2px);
+    clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+  }
+  82% {
+    transform: translate(0, 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes bf-rgb-split {
+  0%, 100% {
+    text-shadow: 
+      0 0 0 transparent,
+      0 0 0 transparent;
+  }
+  10%, 45%, 80% {
+    text-shadow: 
+      -3px 0 0 rgba(0, 255, 255, 0.6),
+      3px 0 0 rgba(255, 0, 0, 0.6);
+  }
+  11%, 46%, 81% {
+    text-shadow: 
+      -4px 0 0 rgba(0, 255, 255, 0.7),
+      4px 0 0 rgba(255, 0, 0, 0.7);
+  }
+  12%, 47%, 82% {
+    text-shadow: 
+      0 0 0 transparent,
+      0 0 0 transparent;
+  }
+}
+
+@keyframes bf-digital-noise {
+  0%, 100% {
+    filter: contrast(1) brightness(1) saturate(1);
+  }
+  10%, 45%, 80% {
+    filter: contrast(1.1) brightness(1.05) saturate(1.05);
+  }
+  12%, 47%, 82% {
+    filter: contrast(1) brightness(1) saturate(1);
+  }
+}
+
+@keyframes bf-scan-lines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.bf2042-glitch {
+  position: relative;
+  animation: 
+    bf-glitch-distort 10s infinite,
+    bf-rgb-split 10s infinite,
+    bf-digital-noise 10s infinite;
+  will-change: transform, filter, text-shadow;
+}
+
+.bf2042-glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 100%
+  );
+  background-size: 100% 3px;
+  animation: bf-scan-lines 0.3s linear infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.bf2042-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  animation: bf-glitch-distort 3s infinite reverse;
+  opacity: 0.4;
+  animation-delay: 0.3s;
+  mix-blend-mode: screen;
+}
+
+/* Flashing Animation for Cyber Cat Name */
+@keyframes flash-name {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.flash-text {
+  animation: flash-name 0.8s ease-in-out infinite;
+}
+
+/* Navbar Flash Animation */
+@keyframes navbar-flash {
+  0%, 100% { 
+    background-color: rgba(17, 24, 39, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  25% { 
+    background-color: rgba(229, 57, 53, 0.4);
+    border-color: rgba(229, 57, 53, 0.6);
+    box-shadow: 0 0 30px rgba(229, 57, 53, 0.8), 0 8px 32px rgba(229, 57, 53, 0.4);
+  }
+  50% { 
+    background-color: rgba(17, 24, 39, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  75% { 
+    background-color: rgba(30, 136, 229, 0.4);
+    border-color: rgba(30, 136, 229, 0.6);
+    box-shadow: 0 0 30px rgba(30, 136, 229, 0.8), 0 8px 32px rgba(30, 136, 229, 0.4);
+  }
+}
+
+.navbar-flashing {
+  animation: navbar-flash 1s ease-in-out 1;
+}
+
 
 /* CYBER GRID LIGHTING SYSTEM */
 .cyber-grid {

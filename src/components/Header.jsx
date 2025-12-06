@@ -8,6 +8,7 @@ import CyberPet from './CyberPet';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('Home');
+  const [isScrolling, setIsScrolling] = useState(false);
   const headerRef = useRef(null);
 
   useGSAP(() => {
@@ -35,12 +36,14 @@ const Header = () => {
   return (
     <>
         {/* Floating Capsule Styles - Adjusted for Mobile Right Alignment */}
-        <header ref={headerRef} className="fixed top-6 left-0 right-0 z-50 flex justify-end md:justify-center px-4 md:px-0 font-poppins pointer-events-none">
+        <header ref={headerRef} className="fixed top-10 left-0 right-0 z-50 flex justify-end md:justify-center px-4 md:px-0 font-poppins pointer-events-none">
             <motion.nav 
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="pointer-events-auto bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center gap-2 md:gap-8 mr-2 md:mr-0"
+                className={`pointer-events-auto bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center gap-2 md:gap-8 mr-2 md:mr-0 transition-all duration-300 ${
+                    isScrolling ? 'navbar-flashing' : ''
+                }`}
             >
                 <CyberPet />
                 {/* Scroll Wave Indicator Container */}
@@ -76,7 +79,26 @@ const Header = () => {
                     <li key={item.name} className="relative">
                         <a
                             href={`#${item.name.toLowerCase()}`}
-                            onClick={() => setActiveTab(item.name)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setActiveTab(item.name);
+                                setIsScrolling(true);
+                                
+                                const element = document.getElementById(item.name.toLowerCase());
+                                if (element) {
+                                    const offset = 80;
+                                    const elementPosition = element.getBoundingClientRect().top;
+                                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                                    
+                                    window.scrollTo({
+                                        top: offsetPosition,
+                                        behavior: 'smooth'
+                                    });
+                                    
+                                    // Stop pulse after 1 second
+                                    setTimeout(() => setIsScrolling(false), 1000);
+                                }
+                            }}
                             className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 z-10 ${
                                 activeTab === item.name ? 'text-white' : 'text-gray-400 hover:text-white'
                             }`}
@@ -137,9 +159,25 @@ const Header = () => {
                                 <li key={item.name}>
                                     <a
                                         href={`#${item.name.toLowerCase()}`}
-                                        onClick={() => {
+                                        onClick={(e) => {
+                                            e.preventDefault();
                                             setActiveTab(item.name);
                                             setIsOpen(false);
+                                            setIsScrolling(true);
+                                            
+                                            const element = document.getElementById(item.name.toLowerCase());
+                                            if (element) {
+                                                const offset = 80;
+                                                const elementPosition = element.getBoundingClientRect().top;
+                                                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                                                
+                                                window.scrollTo({
+                                                    top: offsetPosition,
+                                                    behavior: 'smooth'
+                                                });
+                                                
+                                                setTimeout(() => setIsScrolling(false), 1000);
+                                            }
                                         }}
                                         className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${
                                             activeTab === item.name ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'

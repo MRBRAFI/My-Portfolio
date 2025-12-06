@@ -136,44 +136,87 @@ const Projects = () => {
                         {/* Scanline Overlay */}
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
                         
-                        <div ref={previewRef} className="relative h-full flex flex-col">
+                        <motion.div 
+                            ref={previewRef} 
+                            key={activeProject.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            className="relative h-full flex flex-col"
+                        >
                              {/* Image Area */}
                              <div className="relative h-64 md:h-[400px] w-full overflow-hidden">
-                                <img 
+                                <motion.img 
                                     src={activeProject.image} 
                                     alt={activeProject.title} 
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
+                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                    initial={{ scale: 1.1, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 0.8 }}
+                                    transition={{ duration: 0.7 }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
                                 
                                 {/* Status Badge */}
-                                <div className="absolute top-4 right-4 bg-black/80 border border-green-500/50 text-green-400 text-xs font-mono px-3 py-1 rounded backdrop-blur-md flex items-center gap-2">
+                                <motion.div 
+                                    className="absolute top-4 right-4 bg-black/80 border border-green-500/50 text-green-400 text-xs font-mono px-3 py-1 rounded backdrop-blur-md flex items-center gap-2"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2, duration: 0.4 }}
+                                >
                                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                                     SYSTEM_ACTIVE
-                                </div>
+                                </motion.div>
                              </div>
 
                              {/* Content Area */}
                              <div className="p-6 md:p-8 space-y-6 flex-1 bg-gradient-to-b from-gray-900/0 to-gray-900/90">
                                 <div>
-                                    <div className="flex items-center gap-3 mb-2">
+                                    <motion.div 
+                                        className="flex items-center gap-3 mb-2"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.3, duration: 0.4 }}
+                                    >
                                         <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">{activeProject.title}</h3>
                                         <span className="px-2 py-1 bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-[10px] font-mono rounded tracking-widest">{activeProject.category}</span>
-                                    </div>
-                                    <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">{activeProject.description}</p>
+                                    </motion.div>
+                                    <motion.p 
+                                        className="text-gray-400 text-lg leading-relaxed max-w-2xl"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.4, duration: 0.4 }}
+                                    >
+                                        {activeProject.description}
+                                    </motion.p>
                                 </div>
 
                                 {/* Tech Stack Tags */}
-                                <div className="flex flex-wrap gap-2">
-                                    {activeProject.tech.map(t => (
-                                        <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs font-mono rounded-full flex items-center gap-1 hover:bg-white/10 transition-colors">
+                                <motion.div 
+                                    className="flex flex-wrap gap-2"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.5, duration: 0.4 }}
+                                >
+                                    {activeProject.tech.map((t, index) => (
+                                        <motion.span 
+                                            key={t} 
+                                            className="px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs font-mono rounded-full flex items-center gap-1 hover:bg-white/10 transition-colors"
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: 0.6 + index * 0.1, duration: 0.3 }}
+                                        >
                                             <Cpu size={10} /> {t}
-                                        </span>
+                                        </motion.span>
                                     ))}
-                                </div>
+                                </motion.div>
 
                                 {/* Actions */}
-                                <div className="flex gap-4 pt-4">
+                                <motion.div 
+                                    className="flex gap-4 pt-4"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.7, duration: 0.4 }}
+                                >
                                     <a 
                                         href={activeProject.links.demo}
                                         target="_blank"
@@ -193,9 +236,9 @@ const Projects = () => {
                                         <Github size={18} />
                                         <span className="hidden md:inline">Source Code</span>
                                     </a>
-                                </div>
+                                </motion.div>
                              </div>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* RIGHT PANEL: DATA LOG (Span 4) */}

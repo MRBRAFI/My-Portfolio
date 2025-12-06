@@ -8,7 +8,7 @@ const Hero = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    // 1. Text Reveal with Glitch Stagger
+    // 1. Text Reveal with Initial Glitch
     const tl = gsap.timeline();
     tl.from(".hero-glitch-text", {
       y: 100,
@@ -26,7 +26,34 @@ const Hero = () => {
         ease: "steps(1)"
     }, "-=0.5");
 
-    // 2. HUD Elements Slide In
+    // 2. Continuous Glitch Loop (starts after initial animation)
+    gsap.timeline({
+        delay: 2.5,
+        repeat: -1,
+        repeatDelay: 2.5
+    })
+    .to(".glitch-overlay", {
+        opacity: 1,
+        duration: 0.05,
+        ease: "steps(1)"
+    })
+    .to(".glitch-overlay", {
+        opacity: 0,
+        duration: 0.05,
+        ease: "steps(1)"
+    })
+    .to(".glitch-overlay", {
+        opacity: 1,
+        duration: 0.05,
+        ease: "steps(1)"
+    })
+    .to(".glitch-overlay", {
+        opacity: 0,
+        duration: 0.05,
+        ease: "steps(1)"
+    });
+
+    // 3. HUD Elements Slide In
     gsap.from(".hud-item", {
         opacity: 0,
         x: -20,

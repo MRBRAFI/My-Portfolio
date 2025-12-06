@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 const CyberPet = () => {
@@ -7,6 +7,11 @@ const CyberPet = () => {
     const rightEyeRef = useRef(null);
     const leftPupilRef = useRef(null);
     const rightPupilRef = useRef(null);
+    const [showName, setShowName] = useState(false);
+
+    const handleClick = () => {
+        setShowName(!showName);
+    };
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -77,8 +82,16 @@ const CyberPet = () => {
     return (
         <div 
             ref={containerRef}
-            className="absolute -top-12 left-1/2 -translate-x-1/2 w-16 h-12 flex items-end justify-center pointer-events-none z-50"
+            onClick={handleClick}
+            className="absolute -top-12 left-1/2 -translate-x-1/2 w-16 h-12 flex items-end justify-center pointer-events-auto z-50 group/pet cursor-pointer"
         >
+            {/* Click/Hover Tooltip */}
+            <div className={`absolute -top-8 left-1/2 -translate-x-1/2 transition-opacity duration-300 pointer-events-none ${showName ? 'opacity-100' : 'opacity-0 group-hover/pet:opacity-100'}`}>
+                <div className="bg-cyan-500/90 text-white px-3 py-1 rounded-md text-xs font-bold whitespace-nowrap flash-text">
+                    Cyber Cat
+                </div>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-cyan-500/90"></div>
+            </div>
             {/* SVG CYBER CAT */}
             <svg 
                 viewBox="0 0 100 80" 
