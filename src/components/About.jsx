@@ -108,7 +108,7 @@ const About = () => {
                             </h3>
                             <ul className="space-y-3 text-gray-300 text-sm">
                                 <li className="flex flex-col">
-                                    <span className="font-bold text-white">English (Honors)</span>
+                                    <span className="font-bold text-white">English (Honours)</span>
                                     <span className="text-xs text-gray-400">National University • Present</span>
                                 </li>
                                 <li className="flex justify-between border-t border-white/10 pt-2">
