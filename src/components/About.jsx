@@ -96,15 +96,50 @@ const About = () => {
                         </p>
                     </div>
 
-                    {/* Stats or Quick Info */}
-                    <div className="flex gap-6 justify-end md:justify-start">
-                        <div className="text-center">
-                            <h3 className="text-3xl font-bold text-white">1+</h3>
-                            <p className="text-xs text-brand-blue uppercase tracking-widest">Years Exp</p>
+                    {/* Education & Coding Journey Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Education Card */}
+                        <div className="reveal-text p-6 rounded-2xl glass-card border border-white/10 relative group hover:border-brand-red/50 transition-colors">
+                            <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-50 transition-opacity">
+                                <Code2 size={40} className="text-brand-red" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <span className="text-brand-red">01.</span> Education
+                            </h3>
+                            <ul className="space-y-3 text-gray-300 text-sm">
+                                <li className="flex flex-col">
+                                    <span className="font-bold text-white">English (Honors)</span>
+                                    <span className="text-xs text-gray-400">National University • Present</span>
+                                </li>
+                                <li className="flex justify-between border-t border-white/10 pt-2">
+                                    <span>HSC (2023)</span>
+                                    <span className="text-brand-blue font-bold">GPA 5.00</span>
+                                </li>
+                                <li className="flex justify-between border-t border-white/10 pt-2">
+                                    <span>SSC (2021)</span>
+                                    <span className="text-brand-red font-bold">GPA 4.61</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div className="text-center">
-                            <h3 className="text-3xl font-bold text-white">10+</h3>
-                            <p className="text-xs text-brand-red uppercase tracking-widest">Projects</p>
+
+                        {/* Coding Journey Card */}
+                        <div className="reveal-text p-6 rounded-2xl glass-card border border-white/10 relative group hover:border-brand-blue/50 transition-colors">
+                            <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-50 transition-opacity">
+                                <Zap size={40} className="text-brand-blue" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <span className="text-brand-blue">02.</span> Coding Journey
+                            </h3>
+                            <ul className="space-y-4 text-gray-300 text-sm">
+                                <li className="flex flex-col gap-1">
+                                    <span className="font-bold text-white">Programming Hero Bootcamp</span>
+                                    <span className="text-xs text-gray-400">Where it all started. Intensive Full Stack training.</span>
+                                </li>
+                                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg">
+                                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+                                    <span className="font-bold">Experience: <span className="text-white">1+ Year</span></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
