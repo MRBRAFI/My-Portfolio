@@ -61,6 +61,15 @@ const projectsData = [
     image: 'https://i.ibb.co.com/CsYXcBRT/Screenshot-2025-12-06-025748.png',
     description: 'Real-time customer support platform with live chat and ticket management systems.',
     links: { demo: 'https://customer-service-project.netlify.app/', github: '#' }
+  },
+  {
+    id: 7,
+    title: 'ASSET_VERSE',
+    category: 'CORP.SYS',
+    tech: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
+    image: 'https://i.ibb.co.com/7x3bmwwB/Screenshot-2025-12-31-134633.png',
+    description: 'Sophisticated full-stack corporate asset management solution designed to streamline resource tracking and organizational efficiency.',
+    links: { demo: 'https://asset-verse-client-nine.vercel.app/', github: '#' }
   }
 ];
 
