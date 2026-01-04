@@ -11,7 +11,7 @@ const Experience = () => {
             id: 1,
             role: "Operations & Technical Manager",
             company: "Family Printing Business",
-            period: "2019 - Present", // Assuming present or recently, adapting based on user context
+            period: "2019 - 2025", // Assuming present or recently, adapting based on user context
             description: "Managed end-to-end business operations, delivering critical printing projects while ensuring technical reliability and customer satisfaction.",
             achievements: [
                 {
