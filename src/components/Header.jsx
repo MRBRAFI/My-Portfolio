@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, User, Briefcase, Cpu, Mail, Waves, Linkedin, Github, Download } from 'lucide-react';
+import { Menu, X, Home, User, Briefcase, Cpu, Mail, Waves, Linkedin, Github, Download, Clock } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import CyberPet from './CyberPet';
@@ -28,8 +28,9 @@ const Header = () => {
   const navItems = [
     { name: 'Home', icon: <Home size={18} /> },
     { name: 'About', icon: <User size={18} /> },
-    { name: 'Projects', icon: <Briefcase size={18} /> },
     { name: 'Skills', icon: <Cpu size={18} /> },
+    { name: 'Experience', icon: <Clock size={18} /> },
+    { name: 'Projects', icon: <Briefcase size={18} /> },
     { name: 'Contact', icon: <Mail size={18} /> },
   ];
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 
 const CyberPet = () => {
@@ -83,56 +84,144 @@ const CyberPet = () => {
         <div 
             ref={containerRef}
             onClick={handleClick}
-            className="absolute -top-12 left-1/2 -translate-x-1/2 w-16 h-12 flex items-end justify-center pointer-events-auto z-50 group/pet cursor-pointer"
+            className="absolute -top-16 left-1/2 -translate-x-1/2 w-20 h-16 flex items-end justify-center pointer-events-auto z-50 group/pet cursor-pointer"
         >
-            {/* Click/Hover Tooltip */}
-            <div className={`absolute -top-8 left-1/2 -translate-x-1/2 transition-opacity duration-300 pointer-events-none ${showName ? 'opacity-100' : 'opacity-0 group-hover/pet:opacity-100'}`}>
-                <div className="bg-cyan-500/90 text-white px-3 py-1 rounded-md text-xs font-bold whitespace-nowrap flash-text">
-                    Cyber Cat
-                </div>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-cyan-500/90"></div>
-            </div>
-            {/* SVG CYBER CAT */}
-            <svg 
-                viewBox="0 0 100 80" 
-                className="w-full h-full drop-shadow-[0_0_10px_rgba(34,211,238,0.5)] overflow-visible"
-            >
-                <g className="cyber-head-group origin-bottom">
-                    {/* Body/Head Shape */}
-                    <path 
-                        d="M20 80 L30 40 L20 20 L40 30 L50 25 L60 30 L80 20 L70 40 L80 80 Z" 
-                        fill="#0f172a" 
-                        stroke="#22d3ee" 
-                        strokeWidth="2"
-                        strokeLinejoin="round" 
+            {/* PULSE GLOW WAVE EFFECT (Vibrant Square Red) */}
+            <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none">
+                {[1, 2, 3].map((i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute w-14 h-14 rounded-xl border-2 border-brand-red/60 shadow-[0_0_15px_rgba(229,57,53,0.4)]"
+                        initial={{ scale: 0.7, opacity: 0.9 }}
+                        animate={{ 
+                            scale: [0.7, 1.6], 
+                            opacity: [0.9, 0] 
+                        }}
+                        transition={{ 
+                            duration: 1.8, 
+                            repeat: Infinity, 
+                            delay: i * 0.6,
+                            ease: "easeOut"
+                        }}
                     />
+                ))}
+                {/* Static base glow - Square */}
+                <div className="absolute w-16 h-16 bg-brand-red/20 blur-xl rounded-xl"></div>
+            </div>
+
+            {/* Click/Hover Tooltip: Futuristic ID Tag */}
+            <AnimatePresence>
+                {(showName) && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        className="absolute -top-12 left-1/2 -translate-x-1/2 z-[60]"
+                    >
+                        <div className="relative px-4 py-1.5 bg-black/80 border border-cyan-500/50 backdrop-blur-md rounded-lg shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                            <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-cyan-400"></div>
+                            <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-cyan-400"></div>
+                            <p className="text-[10px] font-mono font-bold text-cyan-400 tracking-[0.2em] uppercase">
+                                UNIT: <span className="text-white animate-pulse">C4T-G7</span>
+                            </p>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* SVG CYBER CAT - Upgraded Design */}
+            <svg 
+                viewBox="0 0 100 100" 
+                className="w-full h-full drop-shadow-[0_0_15px_rgba(34,211,238,0.4)] overflow-visible"
+            >
+                <defs>
+                    <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#0f172a" />
+                        <stop offset="100%" stopColor="#1e293b" />
+                    </linearGradient>
+                    <filter id="neonBlur">
+                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <g className="cyber-head-group origin-bottom">
+                    {/* ROBOTIC EARS - Rounded & Paneled */}
+                    <g className="ears">
+                        {/* Left Ear */}
+                        <path d="M25 35 Q15 5 45 35" fill="url(#cyberGrad)" stroke="#22d3ee" strokeWidth="1.5" strokeLinejoin="round" />
+                        <path d="M24 30 Q18 15 35 30" stroke="#22d3ee" strokeWidth="0.5" opacity="0.5" fill="none" />
+                        
+                        {/* Right Ear */}
+                        <path d="M75 35 Q85 5 55 35" fill="url(#cyberGrad)" stroke="#22d3ee" strokeWidth="1.5" strokeLinejoin="round" />
+                        <path d="M76 30 Q82 15 65 30" stroke="#22d3ee" strokeWidth="0.5" opacity="0.5" fill="none" />
+                    </g>
+
+                    {/* MAIN HEAD PANEL - Rounded Base */}
+                    <path 
+                        d="M25 85 Q20 85 20 80 L20 40 Q20 25 50 25 Q80 25 80 40 L80 80 Q80 85 75 85 Z" 
+                        fill="url(#cyberGrad)" 
+                        stroke="#22d3ee" 
+                        strokeWidth="2" 
+                        strokeLinejoin="round"
+                    />
+
+                    {/* FOREHEAD PANELING / CIRCUITRY */}
+                    <path d="M35 35 Q50 30 65 35" fill="none" stroke="#22d3ee" strokeWidth="0.5" opacity="0.4" />
+                    <line x1="50" y1="25" x2="50" y2="32" stroke="#22d3ee" strokeWidth="1" opacity="0.6" />
+
+                    {/* SENSORY ANTENNA */}
+                    <g className="antenna">
+                        <line x1="50" y1="25" x2="50" y2="12" stroke="#22d3ee" strokeWidth="1.5" />
+                        <circle cx="50" cy="10" r="3" fill="#ef4444" filter="url(#neonBlur)">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                    </g>
                     
-                    {/* Ears */}
-                    <path d="M20 20 L25 5 L40 30" fill="#0f172a" stroke="#22d3ee" strokeWidth="2" />
-                    <path d="M80 20 L75 5 L60 30" fill="#0f172a" stroke="#22d3ee" strokeWidth="2" />
+                    {/* CYBER EYES - More Tech Look */}
+                    <g className="eyes-system shadow-inner">
+                        <g ref={leftEyeRef} transform="translate(38, 52)">
+                            <rect x="-10" y="-8" width="20" height="16" rx="4" fill="#000" stroke="#22d3ee" strokeWidth="1" />
+                            <circle ref={leftPupilRef} r="4" fill="#22d3ee" filter="url(#neonBlur)" />
+                            {/* Scanning line for eyes */}
+                            <line x1="-8" y1="-4" x2="8" y2="-4" stroke="#22d3ee" strokeWidth="0.5" opacity="0.2">
+                                <animate attributeName="y1" values="-6;6;-6" dur="3s" repeatCount="indefinite" />
+                                <animate attributeName="y2" values="-6;6;-6" dur="3s" repeatCount="indefinite" />
+                            </line>
+                        </g>
 
-                    {/* Antenna */}
-                    <path d="M50 25 L50 10" stroke="#ef4444" strokeWidth="2" />
-                    <circle cx="50" cy="8" r="3" fill="#ef4444" className="animate-pulse" />
-
-                    {/* Eyes Container */}
-                    <g ref={leftEyeRef} transform="translate(35, 45)">
-                        <ellipse rx="8" ry="6" fill="#000" stroke="#22d3ee" strokeWidth="1" />
-                        <circle ref={leftPupilRef} r="3" fill="#22d3ee" />
+                        <g ref={rightEyeRef} transform="translate(62, 52)">
+                            <rect x="-10" y="-8" width="20" height="16" rx="4" fill="#000" stroke="#22d3ee" strokeWidth="1" />
+                            <circle ref={rightPupilRef} r="4" fill="#22d3ee" filter="url(#neonBlur)" />
+                             {/* Scanning line for eyes */}
+                             <line x1="-8" y1="-4" x2="8" y2="-4" stroke="#22d3ee" strokeWidth="0.5" opacity="0.2">
+                                <animate attributeName="y1" values="-6;6;-6" dur="3s" repeatCount="indefinite" />
+                                <animate attributeName="y2" values="-6;6;-6" dur="3s" repeatCount="indefinite" />
+                            </line>
+                        </g>
                     </g>
 
-                    <g ref={rightEyeRef} transform="translate(65, 45)">
-                        <ellipse rx="8" ry="6" fill="#000" stroke="#22d3ee" strokeWidth="1" />
-                        <circle ref={rightPupilRef} r="3" fill="#22d3ee" />
+                    {/* TECH WHISKERS */}
+                    <g stroke="#22d3ee" strokeWidth="0.5" opacity="0.6">
+                        <line x1="25" y1="65" x2="10" y2="60" />
+                        <line x1="25" y1="72" x2="10" y2="72" />
+                        <line x1="75" y1="65" x2="90" y2="60" />
+                        <line x1="75" y1="72" x2="90" y2="72" />
                     </g>
 
-                    {/* Mouth */}
-                    <path d="M45 60 L50 63 L55 60" stroke="#22d3ee" strokeWidth="1" fill="none" />
+                    {/* VOCALIZER / MOUTH */}
+                    <path d="M42 75 Q50 82 58 75" fill="none" stroke="#22d3ee" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
                 </g>
             </svg>
             
-            {/* Holographic Platform Effect */}
-            <div className="absolute -bottom-1 w-12 h-1 bg-cyan-400/50 blur-sm rounded-full"></div>
+            {/* Holographic Platform Base */}
+            <div className="absolute -bottom-1 w-16 h-1 flex justify-center">
+                <div className="w-full h-full bg-cyan-400/30 blur-md rounded-full animate-pulse"></div>
+                <div className="absolute top-0 w-8 h-[2px] bg-cyan-400 shadow-[0_0_10px_#22d3ee]"></div>
+            </div>
         </div>
     );
 };

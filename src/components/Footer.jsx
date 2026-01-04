@@ -1,9 +1,24 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, Mail, Phone, MapPin, Send, MessageCircle, ArrowUp, Zap } from 'lucide-react';
+import { 
+  ChevronDown, 
+  ChevronUp, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Send, 
+  MessageCircle, 
+  ArrowUp, 
+  Zap,
+  Linkedin,
+  Github,
+  Globe
+} from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqData = [
   {
@@ -57,6 +72,11 @@ const Footer = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const containerRef = useRef(null);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState(prev => ({ ...prev, [name]: value }));
+  };
+
   useGSAP(() => {
     // 1. Reveal Footer Content
     gsap.from(".footer-content", {
@@ -71,18 +91,31 @@ const Footer = () => {
         }
     });
 
-    // 2. Infinite Marquee Animation (GSAP Fallback or enhancement)
-    // Using Tailwind animate-[scroll] for main logic, but GSAP can refine
   }, { scope: containerRef });
 
   const handleSubmit = (e) => {
       e.preventDefault();
+      console.log('Form Submitted:', formState);
       alert('Transmission Sent! (Simulated)');
+      setFormState({ name: '', email: '', message: '' });
   };
 
   const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const socialLinks = [
+    { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/mrbrafi2005' },
+    { icon: <Github size={18} />, href: 'https://github.com/MRBRAFI' },
+    { icon: <Mail size={18} />, href: 'mailto:devmrbrafi@gmail.com' },
+  ];
+
+  const quickLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
+  ];
 
   return (
     <footer ref={containerRef} id="contact" className="relative pt-32 pb-10 overflow-hidden bg-black">
@@ -126,7 +159,7 @@ const Footer = () => {
 
                 <div className="grid gap-6">
                     {/* Social Cards with Holographic Hover */}
-                    <div className="group relative bg-gray-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-6 hover:border-brand-blue/50 transition-all duration-300 overflow-hidden">
+                    <a href="mailto:devmrbrafi@gmail.com" className="group relative bg-gray-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-6 hover:border-brand-blue/50 transition-all duration-300 overflow-hidden block">
                          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/10 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></div>
                          <div className="relative z-10 w-12 h-12 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue group-hover:rotate-12 transition-transform">
                             <Mail size={24} />
@@ -135,9 +168,9 @@ const Footer = () => {
                              <p className="text-xs text-gray-500 font-mono mb-1">EMAIL_TRANSMISSION</p>
                              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-brand-blue transition-colors">devmrbrafi@gmail.com</h3>
                          </div>
-                    </div>
+                    </a>
 
-                    <div className="group relative bg-gray-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-6 hover:border-green-500/50 transition-all duration-300 overflow-hidden">
+                    <a href="https://wa.me/8801971789176" target="_blank" rel="noopener noreferrer" className="group relative bg-gray-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-6 hover:border-green-500/50 transition-all duration-300 overflow-hidden block">
                          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></div>
                          <div className="relative z-10 w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 group-hover:rotate-12 transition-transform">
                             <MessageCircle size={24} />
@@ -146,7 +179,7 @@ const Footer = () => {
                              <p className="text-xs text-gray-500 font-mono mb-1">SECURE_CHAT</p>
                              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-green-500 transition-colors">+880 19717 89176</h3>
                          </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
@@ -169,6 +202,9 @@ const Footer = () => {
                                 <label className="text-xs font-mono text-gray-500 ml-1">CODENAME</label>
                                 <input 
                                     type="text" 
+                                    name="name"
+                                    value={formState.name}
+                                    onChange={handleInputChange}
                                     placeholder="Enter Name" 
                                     className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-brand-blue focus:shadow-[0_0_15px_rgba(30,136,229,0.2)] focus:outline-none transition-all"
                                 />
@@ -177,6 +213,9 @@ const Footer = () => {
                                 <label className="text-xs font-mono text-gray-500 ml-1">COMM_ID</label>
                                 <input 
                                     type="email" 
+                                    name="email"
+                                    value={formState.email}
+                                    onChange={handleInputChange}
                                     placeholder="Enter Email" 
                                     className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-brand-blue focus:shadow-[0_0_15px_rgba(30,136,229,0.2)] focus:outline-none transition-all"
                                 />
@@ -185,6 +224,9 @@ const Footer = () => {
                         <div className="space-y-2">
                             <label className="text-xs font-mono text-gray-500 ml-1">TRANSMISSION_DATA</label>
                             <textarea 
+                                name="message"
+                                value={formState.message}
+                                onChange={handleInputChange}
                                 rows="4"
                                 placeholder="Type your message..." 
                                 className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-brand-blue focus:shadow-[0_0_15px_rgba(30,136,229,0.2)] focus:outline-none transition-all resize-none"
@@ -214,19 +256,53 @@ const Footer = () => {
         </div>
 
         {/* --- BOTTOM BAR --- */}
-        <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center relative z-10">
-             <p className="text-gray-600 font-mono text-xs uppercase tracking-widest">
-                &copy; {new Date().getFullYear()} MRB RAFI. All Systems Functional.
-             </p>
-             
-             {/* Back to Top Rocket */}
-             <button 
-                onClick={scrollToTop}
-                className="group mt-4 md:mt-0 px-6 py-2 bg-white/5 border border-white/10 rounded-full flex items-center gap-2 hover:bg-white hover:text-black transition-all duration-300"
-             >
-                <span className="text-xs font-bold uppercase tracking-widest">System Lift</span>
-                <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
-             </button>
+        <div className="container mx-auto max-w-7xl px-6 mt-20 pt-10 border-t border-white/5 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                {/* Copyright */}
+                <div className="text-center md:text-left order-3 md:order-1">
+                    <p className="text-gray-600 font-mono text-[10px] uppercase tracking-widest">
+                        &copy; {new Date().getFullYear()} MRB RAFI. <br className="md:hidden" /> All Systems Functional.
+                    </p>
+                </div>
+
+                {/* Social Links Central */}
+                <div className="flex justify-center gap-4 order-1 md:order-2">
+                    {socialLinks.map((link, i) => (
+                        <a 
+                            key={i} 
+                            href={link.href} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-blue hover:bg-brand-blue/10 transition-all duration-300"
+                        >
+                            {link.icon}
+                        </a>
+                    ))}
+                </div>
+
+                {/* Quick Links & Scroll Top */}
+                <div className="flex flex-col md:flex-row items-center justify-end gap-6 order-2 md:order-3">
+                    <div className="hidden lg:flex gap-6">
+                        {quickLinks.map((link) => (
+                            <a 
+                                key={link.name} 
+                                href={link.href} 
+                                className="text-[10px] font-bold text-gray-500 uppercase tracking-widest hover:text-brand-blue transition-colors"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
+                    </div>
+                    
+                    <button 
+                        onClick={scrollToTop}
+                        className="group px-6 py-2 bg-white/5 border border-white/10 rounded-full flex items-center gap-2 hover:bg-white hover:text-black transition-all duration-300"
+                    >
+                        <span className="text-[10px] font-bold uppercase tracking-widest">System Lift</span>
+                        <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
+                    </button>
+                </div>
+            </div>
         </div>
 
     </footer>

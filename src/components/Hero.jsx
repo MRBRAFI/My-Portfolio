@@ -65,7 +65,7 @@ const Hero = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="home" className="relative w-full h-screen overflow-hidden flex items-center justify-center pt-20">
+    <section ref={containerRef} id="home" className="relative w-full min-h-screen overflow-hidden flex items-center justify-center py-24 md:py-32">
       
       {/* Background Particles (Procedural) */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -99,7 +99,7 @@ const Hero = () => {
           <div className="absolute left-10 bottom-32 w-32 h-[1px] bg-white/10"></div>
       </div>
 
-      <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center pt-24 md:pt-0">
+      <div className="relative z-20 container mx-auto px-6 max-w-7xl h-full flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           
           {/* TEXT CONTENT */}
@@ -120,6 +120,13 @@ const Hero = () => {
                         <span className="glitch-overlay absolute top-0 left-0 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 opacity-0 mix-blend-screen translate-x-[2px] pointer-events-none">RAFI</span>
                     </div>
                 </h1>
+
+
+                <h2 className="hero-glitch-text text-2xl md:text-4xl font-bold tracking-wider mt-2 mb-6">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-cyan-400 drop-shadow-[0_0_10px_rgba(30,136,229,0.5)]">
+                        MERN STACK DEVELOPER
+                    </span>
+                </h2>
             </div>
 
             <p className="hero-glitch-text text-base md:text-xl text-gray-400 max-w-lg leading-relaxed border-l-0 md:border-l-2 border-brand-blue/30 md:pl-6 mx-auto lg:mx-0">
@@ -134,7 +141,7 @@ const Hero = () => {
               <div className="h-px w-12 bg-white/10 mx-2 hidden sm:block"></div>
 
               <a 
-                href="https://docs.google.com/document/d/1DwLnXMimgNZeyHHu12ZVAX4q5u3d31KK846b9CCwDN0/export?format=pdf"
+                href="https://docs.google.com/document/d/12qI3zGR2uZk_x9jPuhAy7fC7U3edBiBMXvJOUXUaqVY/export?format=pdf"
                 className="group relative px-6 py-2 bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest hover:bg-brand-red hover:border-brand-red transition-all duration-300 flex items-center gap-2 backdrop-blur-md"
               >
                   <span>Download CV</span>

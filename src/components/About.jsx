@@ -45,10 +45,10 @@ const About = () => {
   ];
 
   return (
-    <section ref={containerRef} id="about" className="relative min-h-screen bg-transparent py-20 px-6 overflow-hidden flex flex-col justify-center">
+    <section ref={containerRef} id="about" className="relative min-h-screen bg-transparent py-24 overflow-hidden flex flex-col justify-center">
         {/* Decorative elements - Cyber Grid Removed (Global Now) */}
 
-        <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="container mx-auto max-w-7xl px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 
                 {/* Left: Futuristic Profile Image */}
@@ -79,7 +79,7 @@ const About = () => {
                 </div>
 
                 {/* Right: Text Content */}
-                <div className="space-y-8 order-1 md:order-2 text-right md:text-left">
+                <div className="space-y-8 order-1 md:order-2 text-center md:text-left">
                     <div className="inline-block relative">
                          <h2 className="reveal-text text-5xl md:text-7xl font-bold text-white tracking-tight">
                             ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-accent-cyan">ME</span>
@@ -89,8 +89,8 @@ const About = () => {
 
                     <div className="reveal-text p-8 rounded-2xl glass-card border-l-4 border-brand-red relative overflow-hidden group">
                         <div className="absolute inset-0 bg-brand-red/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700"></div>
-                        <p className="text-gray-300 leading-relaxed text-lg relative z-10">
-                            I am a <span className="text-brand-red font-bold">Cyber-Architect</span> of the web. As a passionate MERN developer, I
+                        <p className="text-gray-300 leading-relaxed text-lg relative z-10 text-justify">
+                            I am a <span className="text-brand-red font-bold">Cyber-Architect</span> of the web. As a passionate <span className="text-brand-blue font-bold">MERN developer</span>, I
                             blend creative vision with technical expertise to build intuitive.
                             high-performance web applications. I thrive on solving complex problems and delivering user-centric solutions that exceed expectations.
                         </p>

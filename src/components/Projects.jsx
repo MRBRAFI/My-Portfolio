@@ -8,69 +8,69 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
-  {
+    {
     id: 1,
-    title: 'AI_INVENTORY',
-    category: 'SYSTEM.CORE',
-    tech: ['React', 'Firebase', 'Tailwind'],
-    image: 'https://i.ibb.co.com/kgtf8C62/Screenshot-2025-12-06-021801.png',
-    description: 'Predictive stock engine with real-time data visualization and automated inventory tracking.',
-    links: { demo: 'https://vento-ai-inventory.web.app/', github: '#' }
-  },
-  {
-    id: 2,
-    title: 'BRAINER_LMS',
-    category: 'ED.MODULE',
-    tech: ['MERN Stack', 'Redux', 'JWT'],
-    image: 'https://i.ibb.co.com/r9Xx9S0/Screenshot-2025-12-06-022507.png',
-    description: 'Comprehensive learning management system with student dashboards and course analytics.',
-    links: { demo: 'https://brainers-16689.web.app/', github: '#' }
-  },
-  {
-    id: 3,
-    title: 'APP_VAULT',
-    category: 'COMMERCE.NET',
-    tech: ['React', 'Stripe', 'Node.js'],
-    image: 'https://i.ibb.co.com/f7hw0nm/Screenshot-2025-12-06-023118.png',
-    description: 'Secure digital asset store featuring seamless payment processing and user asset management.',
-    links: { demo: 'https://app-vault-by-mrb.netlify.app/', github: '#' }
-  },
-  {
-    id: 4,
-    title: 'NEXT_CLIENT',
-    category: 'WEB.APP',
-    tech: ['Next.js 14', 'TypeScript', 'Prisma'],
-    image: 'https://i.ibb.co.com/RpP0pgCS/Screenshot-2025-12-06-022752.png',
-    description: 'Scalable cutting-edge web framework implementation optimized for high performance.',
-    links: { demo: 'https://next-app-client-seven.vercel.app/', github: '#' }
-  },
-   {
-    id: 5,
-    title: 'ECO_PLANTER',
-    category: 'BIO.TECH',
-    tech: ['IoT', 'React', 'Firebase'],
-    image: 'https://i.ibb.co.com/5WjZZVnt/Screenshot-2025-12-06-025630.png',
-    description: 'Smart environmental monitoring dashboard integrated with IoT sensors for green tech.',
-    links: { demo: 'https://green-earth-assignment-6-mrb-rafi.netlify.app/', github: '#' }
-  },
-  {
-    id: 6,
-    title: 'SUPPORT_DESK',
-    category: 'SERVICE',
-    tech: ['React', 'Socket.io', 'Express'],
-    image: 'https://i.ibb.co.com/CsYXcBRT/Screenshot-2025-12-06-025748.png',
-    description: 'Real-time customer support platform with live chat and ticket management systems.',
-    links: { demo: 'https://customer-service-project.netlify.app/', github: '#' }
-  },
-  {
-    id: 7,
     title: 'ASSET_VERSE',
     category: 'CORP.SYS',
     tech: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
     image: 'https://i.ibb.co.com/7x3bmwwB/Screenshot-2025-12-31-134633.png',
     description: 'Sophisticated full-stack corporate asset management solution designed to streamline resource tracking and organizational efficiency.',
-    links: { demo: 'https://asset-verse-client-nine.vercel.app/', github: '#' }
-  }
+    links: { demo: 'https://asset-verse-client-nine.vercel.app/', github: 'https://github.com/MRBRAFI/AssetVerse-Client' }
+  },
+  {
+    id: 2,
+    title: 'AI_INVENTORY',
+    category: 'SYSTEM.CORE',
+    tech: ['React', 'Firebase', 'Tailwind'],
+    image: 'https://i.ibb.co.com/NdL2g5Zz/Screenshot-2026-01-04-235107.png',
+    description: 'Predictive stock engine with real-time data visualization and automated inventory tracking.',
+    links: { demo: 'https://vento-ai-inventory.web.app/', github: 'https://github.com/MRBRAFI/vento-ai-manager-client' }
+  },
+  {
+    id: 3,
+    title: 'BRAINER',
+    category: 'ED.MODULE',
+    tech: ['MERN Stack', 'Redux', 'JWT'],
+    image: 'https://i.ibb.co.com/r9Xx9S0/Screenshot-2025-12-06-022507.png',
+    description: 'Comprehensive learning management system with student dashboards and course analytics.',
+    links: { demo: 'https://brainers-16689.web.app/', github: 'https://github.com/MRBRAFI/Brainers-Assignment-' }
+  },
+  {
+    id: 4,
+    title: 'APP_VAULT',
+    category: 'COMMERCE.NET',
+    tech: ['React', 'Stripe', 'Node.js'],
+    image: 'https://i.ibb.co.com/f7hw0nm/Screenshot-2025-12-06-023118.png',
+    description: 'Secure digital asset store featuring seamless payment processing and user asset management.',
+    links: { demo: 'https://app-vault-by-mrb.netlify.app/', github: 'https://github.com/MRBRAFI/AppVault-Assignment' }
+  },
+  {
+    id: 5,
+    title: 'NEXT_CLIENT',
+    category: 'WEB.APP',
+    tech: ['Next.js 14', 'TypeScript', 'Prisma'],
+    image: 'https://i.ibb.co.com/RpP0pgCS/Screenshot-2025-12-06-022752.png',
+    description: 'Scalable cutting-edge web framework implementation optimized for high performance.',
+    links: { demo: 'https://next-app-client-seven.vercel.app/', github: 'https://github.com/MRBRAFI/Next-App-Client' }
+  },
+   {
+    id: 6,
+    title: 'ECO_PLANTER',
+    category: 'BIO.TECH',
+    tech: ['IoT', 'React', 'Firebase'],
+    image: 'https://i.ibb.co.com/5WjZZVnt/Screenshot-2025-12-06-025630.png',
+    description: 'Smart environmental monitoring dashboard integrated with IoT sensors for green tech.',
+    links: { demo: 'https://green-earth-assignment-6-mrb-rafi.netlify.app/', github: 'https://github.com/MRBRAFI/Green-Earth-My-first-Api-fetching-project' }
+  },
+  {
+    id: 7,
+    title: 'SUPPORT_DESK',
+    category: 'SERVICE',
+    tech: ['React', 'Socket.io', 'Express'],
+    image: 'https://i.ibb.co.com/CsYXcBRT/Screenshot-2025-12-06-025748.png',
+    description: 'Real-time customer support platform with live chat and ticket management systems.',
+    links: { demo: 'https://customer-service-project.netlify.app/', github: 'https://github.com/MRBRAFI' }
+  },
 ];
 
 const Projects = () => {
@@ -116,9 +116,9 @@ const Projects = () => {
     };
 
     return (
-        <section id="projects" className="py-24 bg-transparent px-4 min-h-screen relative overflow-hidden flex flex-col items-center">
+        <section id="projects" className="py-24 bg-transparent min-h-screen relative overflow-hidden flex flex-col items-center">
              
-            <div ref={containerRef} className="container mx-auto relative z-10 max-w-7xl">
+            <div ref={containerRef} className="container mx-auto px-6 relative z-10 max-w-7xl">
                 
                 {/* Header */}
                 <div className="text-center mb-16 space-y-4">
