@@ -13,8 +13,7 @@
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Outerspace Background */
-    @apply bg-custom-dark-blue;
+    @apply bg-[#051025];
     background: radial-gradient(circle at 15% 50%, #E53935 0%, transparent 25%), 
                 radial-gradient(circle at 85% 30%, #1E88E5 0%, transparent 25%), 
                 linear-gradient(to bottom, #051025 0%, #0D47A1 100%);
@@ -23,11 +22,17 @@
     overflow-x: hidden;
   }
 
-  /* Disable fixed background on mobile for performance */
   @media (max-width: 1024px) {
     body {
-      background-attachment: scroll;
+      background-attachment: scroll !important;
+      background: #051025 !important;
     }
+  }
+}
+
+.mobile-hide {
+  @media (max-width: 768px) {
+    display: none !important;
   }
 }
 
@@ -44,8 +49,9 @@
 
 @media (max-width: 768px) {
   .glass-card {
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(13, 17, 23, 0.95);
   }
 }
 
@@ -168,6 +174,13 @@
   will-change: filter, transform;
 }
 
+@media (max-width: 768px) {
+  .electric-text {
+    animation: none !important;
+    text-shadow: 0 0 10px rgba(229, 57, 53, 0.5);
+  }
+}
+
 /* Battlefield 2042 Style Glitch Distortion */
 @keyframes bf-glitch-distort {
   0%, 100% {
@@ -253,6 +266,15 @@
   will-change: transform, filter, text-shadow;
 }
 
+@media (max-width: 768px) {
+  .bf2042-glitch {
+    animation: none !important;
+  }
+  .bf2042-glitch::before, .bf2042-glitch::after {
+    display: none !important;
+  }
+}
+
 .bf2042-glitch::before {
   content: attr(data-text);
   position: absolute;
@@ -327,6 +349,7 @@
 
 /* CYBER GRID LIGHTING SYSTEM */
 .cyber-grid {
+  display: block;
   width: 100%;
   height: 100%;
   background-image: 
@@ -340,6 +363,12 @@
   transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
   transform-origin: top center;
   mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  .cyber-grid, .grid-beam, .grid-shiny-lines {
+    display: none !important;
+  }
 }
 
 @keyframes gridBeam {
@@ -443,4 +472,54 @@
 
 .animate-float-particle {
   animation: float-particle linear infinite;
+}
+
+/* 
+   ==========================================================================
+   AGGRESSIVE MOBILE PERFORMANCE OVERRIDES
+   ==========================================================================
+*/
+@media (max-width: 768px) {
+  /* Disable heavy CSS features globally on mobile */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Simplify backgrounds */
+  body {
+    background: #020617 !important;
+    background-image: none !important;
+  }
+
+  /* Remove all animated background elements */
+  .stars, 
+  .cyber-grid, 
+  .grid-beam, 
+  .grid-shiny-lines,
+  .scan-line-loader,
+  .animate-pulse,
+  .animate-pulse-glow,
+  .animate-float-particle,
+  .scroll-wave-fill,
+  [class*="blur-"],
+  .fixed.inset-0.pointer-events-none {
+    display: none !important;
+    animation: none !important;
+  }
+
+  /* Simplify transitions */
+  * {
+    transition-duration: 0.05s !important;
+    animation-duration: 0.05s !important;
+  }
+
+  /* Force simple rounded corners */
+  .glass-card, [class*="rounded-"] {
+    border-radius: 8px !important;
+    background: #0f172a !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+  }
 }
