@@ -8,13 +8,6 @@ const Hero = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    // Only run complex animations on desktop
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-        gsap.set(".hero-glitch-text", { opacity: 1, y: 0 });
-        return;
-    }
-
     // 1. Text Reveal with Initial Glitch
     const tl = gsap.timeline();
     tl.from(".hero-glitch-text", {

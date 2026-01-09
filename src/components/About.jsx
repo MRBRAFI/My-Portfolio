@@ -11,12 +11,6 @@ const About = () => {
     const containerRef = useRef(null);
 
     useGSAP(() => {
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            gsap.set('.reveal-text', { opacity: 1, y: 0 });
-            return;
-        }
-
         const textElements = gsap.utils.toArray('.reveal-text');
         
         textElements.forEach((text) => {
