@@ -15,6 +15,8 @@ const CyberPet = () => {
     };
 
     useEffect(() => {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
         const handleMouseMove = (e) => {
             if (!leftEyeRef.current || !rightEyeRef.current) return;
 
@@ -25,8 +27,8 @@ const CyberPet = () => {
 
                 const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
                 const distance = Math.min(
-                    6, // Increased range
-                    Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 6 // Increased sensitivity
+                    6,
+                    Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 6
                 );
 
                 const x = Math.cos(angle) * distance;
@@ -48,7 +50,7 @@ const CyberPet = () => {
             const headCenterX = headRect.left + headRect.width / 2;
             const headCenterY = headRect.top + headRect.height / 2;
             
-            const headX = (e.clientX - headCenterX) / 20; // Limit rotation
+            const headX = (e.clientX - headCenterX) / 20;
             const headY = (e.clientY - headCenterY) / 20;
 
             gsap.to(".cyber-head-group", {
@@ -60,7 +62,9 @@ const CyberPet = () => {
             });
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
+        if (!isTouchDevice) {
+            window.addEventListener('mousemove', handleMouseMove);
+        }
         
         // Random Blink Animation
         const blinkInterval = setInterval(() => {
@@ -86,28 +90,7 @@ const CyberPet = () => {
             onClick={handleClick}
             className="absolute -top-16 left-1/2 -translate-x-1/2 w-20 h-16 flex items-end justify-center pointer-events-auto z-50 group/pet cursor-pointer"
         >
-            {/* PULSE GLOW WAVE EFFECT (Vibrant Square Red) */}
-            <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none">
-                {[1, 2, 3].map((i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-14 h-14 rounded-xl border-2 border-brand-red/60 shadow-[0_0_15px_rgba(229,57,53,0.4)]"
-                        initial={{ scale: 0.7, opacity: 0.9 }}
-                        animate={{ 
-                            scale: [0.7, 1.6], 
-                            opacity: [0.9, 0] 
-                        }}
-                        transition={{ 
-                            duration: 1.8, 
-                            repeat: Infinity, 
-                            delay: i * 0.6,
-                            ease: "easeOut"
-                        }}
-                    />
-                ))}
-                {/* Static base glow - Square */}
-                <div className="absolute w-16 h-16 bg-brand-red/20 blur-xl rounded-xl"></div>
-            </div>
+
 
             {/* Click/Hover Tooltip: Futuristic ID Tag */}
             <AnimatePresence>

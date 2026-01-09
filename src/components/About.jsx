@@ -151,8 +151,8 @@ const About = () => {
         <div className="mt-24 relative w-full overflow-hidden py-10">
             
             {/* Background Stream Effects */}
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm transform -skew-y-2 origin-left scale-110 border-y border-brand-red/20"></div>
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(250,215,18,0.05)_50%,transparent_100%)] animate-pulse"></div>
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] md:backdrop-blur-sm transform -skew-y-2 origin-left scale-110 border-y border-brand-red/20 transform-gpu"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(250,215,18,0.05)_50%,transparent_100%)] animate-pulse transform-gpu"></div>
             
             {/* ROW 1: Solid High-Contrast */}
             <div className="relative z-10 mb-4 transform -rotate-1">
@@ -161,7 +161,7 @@ const About = () => {
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 >
-                    {[...skills, ...skills, ...skills, ...skills].map((skill, index) => (
+                    {[...skills, ...skills].map((skill, index) => (
                         <div key={index} className="flex items-center gap-4 px-6 py-3 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red font-bold text-xl md:text-2xl uppercase tracking-widest shadow-[0_0_15px_rgba(229,57,53,0.2)] hover:bg-brand-red hover:text-white transition-all cursor-crosshair group">
                             <span className="group-hover:animate-spin-slow">{skill.icon}</span>
                             {skill.name}
@@ -177,7 +177,7 @@ const About = () => {
                     animate={{ x: ["-50%", "0%"] }}
                     transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 >
-                    {[...skills, ...skills, ...skills, ...skills].map((skill, index) => (
+                    {[...skills, ...skills].map((skill, index) => (
                          <div key={index} className="flex items-center gap-4 text-transparent stroke-text text-3xl md:text-5xl font-black uppercase tracking-tighter opacity-30 hover:opacity-100 transition-opacity">
                             {/* Note: Stroke text effect requires custom CSS or -webkit-text-stroke */}
                             <span className="text-gray-500">{skill.icon}</span>

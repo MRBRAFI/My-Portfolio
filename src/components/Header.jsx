@@ -51,10 +51,10 @@ const Header = () => {
                 <div className="hidden md:flex items-center gap-2 pr-4 border-r border-white/10 relative">
                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20 bg-gray-800 flex items-end justify-center group">
                         {/* Wave Fill */}
-                        <div className="scroll-wave-fill relative w-full h-0 bg-cyan-500/80 z-0">
+                        <div className="scroll-wave-fill relative w-full h-0 bg-cyan-500/80 z-0 will-change-[height]">
                             {/* Liquid Top */}
-                            <div className="absolute -top-[10px] left-0 right-0 w-[200%] h-3 bg-cyan-500/80 rounded-[50%] animate-[spin_4s_linear_infinite] origin-center -translate-x-1/2 opacity-80"></div>
-                            <div className="absolute -top-[8px] left-0 right-0 w-[200%] h-3 bg-brand-blue/80 rounded-[40%] animate-[spin_6s_linear_infinite_reverse] origin-center -translate-x-1/2 opacity-70"></div>
+                            <div className="absolute -top-[10px] left-0 right-0 w-[200%] h-3 bg-cyan-500/80 rounded-[50%] animate-[spin_4s_linear_infinite] origin-center -translate-x-1/2 opacity-80 will-change-transform"></div>
+                            <div className="absolute -top-[8px] left-0 right-0 w-[200%] h-3 bg-brand-blue/80 rounded-[40%] animate-[spin_6s_linear_infinite_reverse] origin-center -translate-x-1/2 opacity-70 will-change-transform"></div>
                             
                             {/* Rising Bubbles */}
                             {[...Array(3)].map((_, i) => (
@@ -124,9 +124,9 @@ const Header = () => {
                 <div className="md:hidden flex items-center gap-3">
                      {/* Mobile Scroll Wave */}
                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/20 bg-gray-800 flex items-end justify-center">
-                        <div className="scroll-wave-fill relative w-full h-0 bg-cyan-500/80 z-0">
-                            <div className="absolute -top-[10px] left-0 right-0 w-[200%] h-3 bg-cyan-500/80 rounded-[50%] animate-[spin_4s_linear_infinite] origin-center -translate-x-1/2 opacity-80"></div>
-                            <div className="absolute -top-[8px] left-0 right-0 w-[200%] h-3 bg-brand-blue/80 rounded-[40%] animate-[spin_6s_linear_infinite_reverse] origin-center -translate-x-1/2 opacity-70"></div>
+                        <div className="scroll-wave-fill relative w-full h-0 bg-cyan-500/80 z-0 will-change-[height]">
+                            <div className="absolute -top-[10px] left-0 right-0 w-[200%] h-3 bg-cyan-500/80 rounded-[50%] animate-[spin_4s_linear_infinite] origin-center -translate-x-1/2 opacity-80 will-change-transform"></div>
+                            <div className="absolute -top-[8px] left-0 right-0 w-[200%] h-3 bg-brand-blue/80 rounded-[40%] animate-[spin_6s_linear_infinite_reverse] origin-center -translate-x-1/2 opacity-70 will-change-transform"></div>
                         </div>
                         <Waves size={14} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white/90" />
                      </div>

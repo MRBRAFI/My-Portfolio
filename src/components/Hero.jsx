@@ -68,11 +68,11 @@ const Hero = () => {
     <section ref={containerRef} id="home" className="relative w-full min-h-screen overflow-hidden flex items-center justify-center py-24 md:py-32">
       
       {/* Background Particles (Procedural) */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-         {[...Array(20)].map((_, i) => (
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+         {[...Array(window.innerWidth < 768 ? 8 : 20)].map((_, i) => (
             <div 
                 key={i}
-                className="absolute bg-brand-blue/30 rounded-full blur-[1px] animate-pulse"
+                className="absolute bg-brand-blue/30 rounded-full blur-[1px] animate-pulse transform-gpu"
                 style={{
                     top: `${Math.random() * 100}%`,
                     left: `${Math.random() * 100}%`,
@@ -85,7 +85,7 @@ const Hero = () => {
       </div>
 
       {/* Radiant Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-brand-blue/10 rounded-full blur-[60px] md:blur-[120px] pointer-events-none z-0 transform-gpu"></div>
 
       {/* Decorative HUD Lines */}
       <div className="absolute inset-0 pointer-events-none z-10 hidden md:block">

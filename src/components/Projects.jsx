@@ -132,7 +132,7 @@ const Projects = () => {
                 </div>
 
                 {/* CYBER DECK INTERFACE */}
-                <div className="cyber-deck-container grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gray-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-6 shadow-2xl relative">
+                <div className="cyber-deck-container grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gray-900/40 backdrop-blur-md md:backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-6 shadow-2xl relative transform-gpu">
                     
                     {/* Decorative Corner Brackets */}
                     <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-brand-blue rounded-tl-lg"></div>

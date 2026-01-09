@@ -56,8 +56,8 @@ const Experience = () => {
     return (
         <section ref={ref} id="experience" className="py-24 relative overflow-hidden">
              {/* Background Elements */}
-             <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none"></div>
-             <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand-red/5 rounded-full blur-[80px] pointer-events-none"></div>
+             <div className="absolute top-1/2 left-0 w-48 md:w-96 h-48 md:h-96 bg-brand-blue/10 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 pointer-events-none transform-gpu"></div>
+             <div className="absolute bottom-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-brand-red/5 rounded-full blur-[40px] md:blur-[80px] pointer-events-none transform-gpu"></div>
 
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <motion.div
@@ -105,10 +105,10 @@ const Experience = () => {
 
                                 {/* Content Column */}
                                 <div className="flex-1 pb-12">
-                                    <motion.div 
-                                        variants={itemVariants}
-                                        className="group relative p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-blue/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(30,136,229,0.1)] backdrop-blur-sm"
-                                    >
+                                     <motion.div 
+                                         variants={itemVariants}
+                                         className="group relative p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-blue/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(30,136,229,0.1)] backdrop-blur-[2px] md:backdrop-blur-sm transform-gpu"
+                                     >
                                         <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                                         
                                         <div className="relative z-10">
