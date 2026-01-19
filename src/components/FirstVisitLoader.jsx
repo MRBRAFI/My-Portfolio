@@ -2,20 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const FirstVisitLoader = ({ onLoadComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [progress, setProgress] = useState(0);
   const [stage, setStage] = useState('entering'); // entering, loading, exiting
 
   useEffect(() => {
-    // Simulate loading progress
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 30);
 
     // Stage transitions
     const stageTimer = setTimeout(() => {
@@ -34,7 +23,6 @@ const FirstVisitLoader = ({ onLoadComplete }) => {
     }, 4500);
 
     return () => {
-      clearInterval(progressInterval);
       clearTimeout(stageTimer);
       clearTimeout(exitTimer);
       clearTimeout(hideTimer);
@@ -100,28 +88,7 @@ const FirstVisitLoader = ({ onLoadComplete }) => {
         </div>
       </div>
 
-      {/* Loading text and progress */}
-      <div className="absolute bottom-16 md:bottom-24 left-1/2 transform -translate-x-1/2 text-center">
-        <div className="text-white/80 text-sm md:text-base font-light tracking-[0.3em] mb-4 uppercase">
-          {progress < 100 ? 'Loading' : 'Ready'}
-        </div>
-        
-        {/* Progress bar */}
-        <div className="w-64 md:w-96 h-1 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
-          <div 
-            className="h-full bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 transition-all duration-300 ease-out rounded-full"
-            style={{ 
-              width: `${progress}%`,
-              boxShadow: '0 0 20px rgba(229, 57, 53, 0.8)'
-            }}
-          ></div>
-        </div>
-        
-        {/* Percentage */}
-        <div className="text-white/60 text-xs md:text-sm font-mono mt-2 tracking-wider">
-          {progress}%
-        </div>
-      </div>
+      {/* Loading text and progress removed as requested */}
     </div>
   );
 };
