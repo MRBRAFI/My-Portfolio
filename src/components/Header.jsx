@@ -202,7 +202,7 @@ const Header = () => {
                             </div>
                             
                             <a 
-                                href="https://docs.google.com/document/d/1DwLnXMimgNZeyHHu12ZVAX4q5u3d31KK846b9CCwDN0/export?format=pdf"
+                                href="https://docs.google.com/document/d/12qI3zGR2uZk_x9jPuhAy7fC7U3edBiBMXvJOUXUaqVY/export?format=pdf"
                                 className="block w-full text-center py-3 bg-white/10 border border-white/20 rounded-lg text-white font-bold uppercase tracking-widest text-sm hover:bg-brand-red hover:border-brand-red transition-all flex items-center justify-center gap-2"
                             >
                                 <span>Download CV</span>
