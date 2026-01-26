@@ -144,7 +144,7 @@ const Hero = () => {
                 href="https://docs.google.com/document/d/12qI3zGR2uZk_x9jPuhAy7fC7U3edBiBMXvJOUXUaqVY/export?format=pdf"
                 className="group relative px-6 py-2 bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest hover:bg-brand-red hover:border-brand-red transition-all duration-300 flex items-center gap-2 backdrop-blur-md"
               >
-                  <span>Download CV</span>
+                  <span>Download Resume</span>
                   <Download size={14} className="group-hover:translate-y-1 transition-transform" />
                   <div className="absolute top-0 left-0 w-1 h-1 bg-white"></div>
                   <div className="absolute bottom-0 right-0 w-1 h-1 bg-white"></div>
